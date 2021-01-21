@@ -1,15 +1,10 @@
 import mongoose from "mongoose";
 
 const Chat = new mongoose.Schema({
-  rootname: String,
+  roomname: String,
   password: String,
-  // content: [
-  //   {
-  //     name: String,
-  //     date: Date,
-  //     message: String,
-  //   },
-  // ],
+  content: Array,
 });
 
+// нам бы дожить до весны... нас не понять, мы дыры в груди
 export default mongoose.models.Chat || mongoose.model("Chat", Chat);
