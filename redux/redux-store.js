@@ -10,4 +10,8 @@ const reducers = combineReducers({
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
+if (typeof window !== "undefined") {
+  window.store = store;
+}
+
 export default store;

@@ -10,6 +10,7 @@ export default async function create_chat(
   await Chat.create({
     roomname,
     password,
+    // content,
   });
 
   res.end();

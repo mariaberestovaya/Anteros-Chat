@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import { getChatMessage } from "../redux/chat_reducer";
 
 const LoginForm = ({ handleSubmit }) => {
   return (
@@ -20,17 +21,9 @@ const LoginReduxForm = reduxForm({
   form: "connection",
 })(LoginForm);
 
-const ConnectRoom = () => {
+const ConnectToRoom = (props) => {
   const onSubmit = async (value) => {
-    const req = await fetch(`http://localhost:3000/api/chat`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(value.name, value.pass),
-    });
-
-    return req.json();
+    props.getChatData(value.room, value.pass);
   };
 
   return <LoginReduxForm onSubmit={onSubmit} />;
@@ -40,4 +33,10 @@ const mapStateToProps = (state) => ({
   chat: state.chat,
 });
 
-export default connect(mapStateToProps)(ConnectRoom);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getChatData: (name, pass) => dispatch(getChatMessage(name, pass)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConnectToRoom);

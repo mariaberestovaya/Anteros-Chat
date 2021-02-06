@@ -6,5 +6,4 @@ const Chat = new mongoose.Schema({
   content: Array,
 });
 
-// нам бы дожить до весны... нас не понять, мы дыры в груди
 export default mongoose.models.Chat || mongoose.model("Chat", Chat);
