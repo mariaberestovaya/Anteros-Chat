@@ -17,7 +17,7 @@ chat_id
 login - original name
 user_id
 
-> List of chat participants
+> List of chat participants 
 chat_id
 user_id
 
