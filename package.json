@@ -8,8 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.6",
     "mongoose": "^5.11.11",
     "next": "10.0.5",
+    "postcss": "^7.0.35",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-redux": "^7.2.2",

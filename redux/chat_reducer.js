@@ -13,9 +13,8 @@ const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CHAT_MESSAGE:
       const chat = {
-        name: action.name,
-        message: action.message,
-        date: action.date,
+        roomname: action.roomname,
+        password: action.password,
       };
       return {
         ...state,
@@ -30,22 +29,21 @@ const chatReducer = (state = initialState, action) => {
 export const getChatMessageAC = (roomname, password) => {
   return {
     type: GET_CHAT_MESSAGE,
-    name: username,
-    message,
-    date,
+    roomname,
+    password,
   };
 };
 
-export const getChatMessage = (username, password) => async (dispatch) => {
+export const getChatMessage = (roomname, password) => async (dispatch) => {
   const data = await fetch(`http://localhost:3000/api/chat`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(username, password),
+    body: JSON.stringify(roomname, password),
   });
 
-  dispatch(getChatMessageAC(data));
+  // dispatch(getChatMessageAC(data.roomname, data.passwod)r);
 };
 
 export default chatReducer;
