@@ -1,26 +1,31 @@
-/_структура в БД_/
+/_structure in the database_/
 
-// регистрируемся, добавляем имя юзера
-// кнопка - создать чат и кнопка - подклчюиться
-// ищем нужный чат(name, password), записываем в таблицу данного пользователя
-// далее...
-// по id чата получаем список всех сообщений
+// register, add the user name
+/ / button-create chat and button-connect
+/ / search for the desired chat (name, password), write to the table of this user
+/ / next...
+// by the chat id we get a list of all messages
 
-> Список групп чата
-chat_id - id чата
-name - загаловок
-password - пароль
-user_id - id пользователя
+> User
+password - password
+login - name user
+photo - avatar
+settings - other settings 
 
-> Список участников чата
-chat_id - id чата
-user_id - id пользователя, который является участником чата
+> List of chat groups
+chat_id
+login - original name
+user_id
 
-> Список сообщений
-message_id - id сообщения
-chat_id - id чата
-user_id - id пользователя, который добавил сообщение
-content - содержимое сообщения
-date_create - дата создания сообщения
+> List of chat participants
+chat_id
+user_id
+
+> List of messages
+message_id 
+chat_id 
+user_id - id of the user who added the messagesе
+content - contents of the message
+date_create
 
 
