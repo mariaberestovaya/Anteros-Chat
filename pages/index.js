@@ -1,22 +1,19 @@
-import Login from "../components/Login";
 import "semantic-ui-css/semantic.min.css";
-import Chat from "./../components/Chat";
+import React from "react";
+import { Divider, Grid, Segment } from "semantic-ui-react";
+import Login from "./../components/Login";
+import SignUp from "./../components/SignUp";
 
 export default function Home(props) {
-  let connect = false;
-
+  // let connect = false
   return (
-    <>
-      <div className="flex items-center justify-center w-1/2 h-screen float-left overflow-auto">
+    <Segment className="h-screen" placeholder>
+      <Grid columns={2} relaxed="very" stackable>
         <Login />
-      </div>
-      {connect ? (
-        <Chat />
-      ) : (
-        <div className="flex items-center justify-center w-1/2 h-screen bg-gray-200 overflow-auto">
-          Вы ещё не подключились ни к одному чату
-        </div>
-      )}
-    </>
+        <SignUp />
+      </Grid>
+
+      <Divider vertical>Or</Divider>
+    </Segment>
   );
 }

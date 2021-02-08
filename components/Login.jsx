@@ -1,27 +1,36 @@
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { getChatMessage } from "../redux/chat_reducer";
-import { Button } from "semantic-ui-react";
+import { Grid, Form, Button } from "semantic-ui-react";
 
 import { InputComponent } from "./FormControls";
 
 const LoginForm = ({ handleSubmit }) => {
   return (
-    <form className="grid gap-4" onSubmit={handleSubmit}>
-      <Field
-        name="room"
-        type="text"
-        component={InputComponent}
-        placeholder="roomname"
-      />
-      <Field
-        name="pass"
-        type="password"
-        component={InputComponent}
-        placeholder="password"
-      />
-      <Button>connect</Button>
-    </form>
+    <Grid.Column>
+      <Form handleSubmit={handleSubmit}>
+        <Field
+          name="login"
+          type="text"
+          component={InputComponent}
+          icon="user"
+          iconPosition="left"
+          label="Username"
+          placeholder="Username"
+        />
+        <Field
+          name="password"
+          type="text"
+          component={InputComponent}
+          icon="lock"
+          iconPosition="left"
+          label="Password"
+          type="password"
+        />
+
+        <Button content="Login" primary />
+      </Form>
+    </Grid.Column>
   );
 };
 
