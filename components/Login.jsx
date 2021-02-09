@@ -3,12 +3,12 @@ import { Field, reduxForm } from "redux-form";
 import { getChatMessage } from "../redux/chat_reducer";
 import { Grid, Form, Button } from "semantic-ui-react";
 
-import { InputComponent } from "./FormControls";
+import { InputComponent } from "./common/FormControls";
 
 const LoginForm = ({ handleSubmit }) => {
   return (
     <Grid.Column>
-      <Form handleSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Field
           name="login"
           type="text"
@@ -27,7 +27,6 @@ const LoginForm = ({ handleSubmit }) => {
           label="Password"
           type="password"
         />
-
         <Button content="Login" primary />
       </Form>
     </Grid.Column>
@@ -40,7 +39,8 @@ const LoginReduxForm = reduxForm({
 
 const ConnectToRoom = (props) => {
   const onSubmit = async (value) => {
-    props.getChatData(value.room, value.pass);
+    // props.getChatData(value.room, value.pass);
+    console.log(value);
   };
 
   return <LoginReduxForm onSubmit={onSubmit} />;

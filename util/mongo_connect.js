@@ -5,7 +5,7 @@ async function mongo_connect() {
     return;
   }
 
-  return mongoose.connect(process.env.MONGO_URI, {
+  return mongoose.connect("mongodb://localhost:27017/chat", {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useNewUrlParser: true,

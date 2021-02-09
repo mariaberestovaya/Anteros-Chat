@@ -1,10 +1,11 @@
 import mongoose, { Schema } from "mongoose";
 
 const User = new Schema({
+  // user_id: String,
   username: String,
   password: String,
   photo: String,
-  // other settings
+  chat_id: String,
 });
 
 export default mongoose.model("User", User);

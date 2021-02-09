@@ -1,16 +1,17 @@
 import database from "../../util/mongo_connect";
-import Chat from "../../models/Chat";
+import User from "../../models/User";
 
 export default async function create_chat(
-  { body: { roomname, password } },
+  { body: { username, password, photo } },
   res
 ) {
   await database();
 
-  await Chat.create({
-    roomname,
+  await User.create({
+    username,
     password,
-    // content,
+    photo,
+    chat_id: null,
   });
 
   res.end();
