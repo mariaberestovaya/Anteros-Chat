@@ -37,7 +37,6 @@ export const getUserLogin = (value) => async (dispatch) => {
   });
 
   const data = await res.json();
-  // console.log(data[0].username);
   dispatch(getUserLoginAC(data[0].username, data[0].password));
 };
 
