@@ -1,6 +1,7 @@
 /_structure in the database_/
 
 // register, add the user name
+
 / / button-create chat and button-connect
 / / search for the desired chat (name, password), write to the table of this user
 / / next...

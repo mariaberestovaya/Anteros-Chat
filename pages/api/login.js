@@ -3,10 +3,21 @@ import User from "../../models/User";
 
 export default async function login({ body }, res) {
   await database();
+
   const get_user = await User.find({
-    username: body.username,
-    password: body.password,
+    username: body.user,
+    password: body.pass,
   });
 
-  return res.json(get_user);
+  return res.status(200).json(get_user);
 }
+
+// export default function handler(req, res) {
+//   res.status(200).json({ user: 'Ada Lovelace' })
+// }
+
+// export default function handler({ body }, res) {
+//   const username = body.user;
+//   const password = body.pass;
+//   res.status(200).json([{ username, password }]);
+// }

@@ -1,16 +1,16 @@
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { getChatMessage } from "../redux/chat_reducer";
+import { getUserLogin } from "../redux/user_reducer";
 import { Grid, Form, Button } from "semantic-ui-react";
 
 import { InputComponent } from "./common/FormControls";
 
-const LoginForm = ({ handleSubmit }) => {
+function LoginForm({ handleSubmit }) {
   return (
     <Grid.Column>
       <Form onSubmit={handleSubmit}>
         <Field
-          name="login"
+          name="user"
           type="text"
           component={InputComponent}
           icon="user"
@@ -19,7 +19,7 @@ const LoginForm = ({ handleSubmit }) => {
           placeholder="Username"
         />
         <Field
-          name="password"
+          name="pass"
           type="text"
           component={InputComponent}
           icon="lock"
@@ -27,19 +27,31 @@ const LoginForm = ({ handleSubmit }) => {
           label="Password"
           type="password"
         />
-        <Button content="Login" primary />
+        <Button type="submit" content="Login" primary />
       </Form>
     </Grid.Column>
   );
-};
+}
 
 const LoginReduxForm = reduxForm({
   form: "connection",
 })(LoginForm);
 
-const ConnectToRoom = (props) => {
+const userLogin = (props) => {
+  // const onSubmit = async (value) => {
+  //   console.log(value);
+  // };
   const onSubmit = async (value) => {
-    // props.getChatData(value.room, value.pass);
+    props.login(value);
+    // const res = await fetch(`http://localhost:3000/api/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(value),
+    // });
+
+    // const data = res.json();
     console.log(value);
   };
 
@@ -47,13 +59,13 @@ const ConnectToRoom = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  chat: state.chat,
+  user: state.user,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getChatData: (name, pass) => dispatch(getChatMessage(name, pass)),
+    login: (name, pass) => dispatch(getUserLogin(name, pass)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConnectToRoom);
+export default connect(mapStateToProps, mapDispatchToProps)(userLogin);

@@ -8,4 +8,4 @@ const User = new Schema({
   chat_id: String,
 });
 
-export default mongoose.model("User", User);
+export default mongoose.models.User || mongoose.model("User", User);
