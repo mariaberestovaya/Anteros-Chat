@@ -1,6 +1,8 @@
 const GET_USER = "connect-mirfak/app/GET_USER";
 
-let initialState = null;
+let initialState = {
+  user: [],
+};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,7 +13,7 @@ const userReducer = (state = initialState, action) => {
       };
       return {
         ...state,
-        user,
+        user: [...state.user, user],
       };
 
     default:
@@ -27,17 +29,20 @@ export const getUserLoginAC = (username, password) => {
   };
 };
 
-export const getUserLogin = (value) => async (dispatch) => {
-  const res = await fetch(`http://localhost:3000/api/login`, {
-    method: "POST",
+export const getUserLogin = (user, pass) => async (dispatch) => {
+  const res = await fetch("/api/login", {
+    body: JSON.stringify({
+      username: user,
+      password: pass,
+    }),
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(value),
+    method: "POST",
   });
 
-  const data = await res.json();
-  dispatch(getUserLoginAC(data[0].username, data[0].password));
+  const result = await res.json();
+  dispatch(getUserLoginAC(result[0].username, result[0].password));
 };
 
 export default userReducer;

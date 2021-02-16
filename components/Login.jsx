@@ -1,23 +1,12 @@
 import { Grid, Form, Button } from "semantic-ui-react";
-
-import { InputComponent } from "./common/FormControls";
+import { connect } from "react-redux";
+import { getUserLogin } from "../redux/user_reducer";
 
 function LoginForm(props) {
-  const loginUser = async (event) => {
+  const loginUser = (event) => {
     event.preventDefault();
 
-    const res = await fetch("/api/login", {
-      body: JSON.stringify({
-        username: event.target.user.value,
-        password: event.target.pass.value,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-
-    await res.json();
+    props.getUserLogin(event.target.user.value, event.target.pass.value);
   };
 
   return (
@@ -47,4 +36,4 @@ function LoginForm(props) {
   );
 }
 
-export default LoginForm;
+export default connect(null, { getUserLogin })(LoginForm);
