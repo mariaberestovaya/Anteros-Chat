@@ -4,7 +4,7 @@ import User from "../../models/User";
 export default async function login({ body: { username, password } }, res) {
   await database();
 
-  const get_user = await User.find({
+  const get_user = await User.findOne({
     username,
     password,
   });

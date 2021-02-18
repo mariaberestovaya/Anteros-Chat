@@ -1,19 +1,19 @@
 const GET_USER = "connect-mirfak/app/GET_USER";
 
-let initialState = {
-  user: [],
-};
+let initialState = {};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
-      const user = {
-        username: action.username,
-        password: action.password,
-      };
+      const data = action.data;
+
       return {
         ...state,
-        user: [...state.user, user],
+        id: data._id,
+        username: data.username,
+        password: data.password,
+        photo: data.photo,
+        chat_id: data.chat_id,
       };
 
     default:
@@ -21,11 +21,10 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export const getUserLoginAC = (username, password) => {
+export const getUserLoginAC = (data) => {
   return {
     type: GET_USER,
-    username,
-    password,
+    data,
   };
 };
 
@@ -42,7 +41,7 @@ export const getUserLogin = (user, pass) => async (dispatch) => {
   });
 
   const result = await res.json();
-  dispatch(getUserLoginAC(result[0].username, result[0].password));
+  dispatch(getUserLoginAC(result));
 };
 
 export default userReducer;
