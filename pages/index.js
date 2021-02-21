@@ -5,7 +5,6 @@ import Login from "./../components/Login";
 import SignUp from "./../components/SignUp";
 
 export default function Home(props) {
-  // let connect = false
   return (
     <Segment className="h-screen" placeholder>
       <Grid columns={2} relaxed="very" stackable>

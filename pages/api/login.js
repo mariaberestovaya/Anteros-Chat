@@ -4,10 +4,15 @@ import User from "../../models/User";
 export default async function login({ body: { username, password } }, res) {
   await database();
 
-  const get_user = await User.findOne({
+  const user = await User.findOne({
     username,
     password,
   });
 
-  return res.json(get_user);
+  if (!user) {
+    console.log("error");
+    return null;
+  } else {
+    return res.json(user);
+  }
 }
