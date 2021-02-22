@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import { reducer as formReducer } from "redux-form";
 
 const reducers = combineReducers({
-  chat: userReducer,
+  user: userReducer,
   form: formReducer,
 });
 

@@ -1,44 +1,55 @@
-const GET_USER = "connect-mirfak/app/GET_USER";
+const GET_USER = "anteros-chat/app/GET_USER";
+const INIT = "anteros-chat/app/INIT";
 
-let initialState = null;
+let initialState = {
+  id: null,
+  username: null,
+  password: null,
+  chat_id: null,
+  isAuth: false,
+};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
-      const user = {
-        username: action.username,
-        password: action.password,
-      };
+      const data = action.data;
+
       return {
         ...state,
-        user,
+        id: data._id,
+        username: data.username,
+        password: data.password,
+        photo: data.photo,
+        chat_id: data.chat_id,
+        isAuth: true,
       };
-
     default:
       return state;
   }
 };
 
-export const getUserLoginAC = (username, password) => {
+export const getUserLoginAC = (data) => {
   return {
     type: GET_USER,
-    username,
-    password,
+    data,
   };
 };
 
-export const getUserLogin = (value) => async (dispatch) => {
-  const res = await fetch(`http://localhost:3000/api/login`, {
-    method: "POST",
+export const getUserLogin = (user, pass) => async (dispatch) => {
+  const res = await fetch("/api/login", {
+    body: JSON.stringify({
+      username: user,
+      password: pass,
+    }),
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(value),
+    method: "POST",
   });
 
-  const data = await res.json();
-  // console.log(data[0].username);
-  dispatch(getUserLoginAC(data[0].username, data[0].password));
+  const result = await res.json();
+
+  dispatch(getUserLoginAC(result));
 };
 
 export default userReducer;
