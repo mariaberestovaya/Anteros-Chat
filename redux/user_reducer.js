@@ -1,6 +1,13 @@
-const GET_USER = "connect-mirfak/app/GET_USER";
+const GET_USER = "anteros-chat/app/GET_USER";
+const INIT = "anteros-chat/app/INIT";
 
-let initialState = {};
+let initialState = {
+  id: null,
+  username: null,
+  password: null,
+  chat_id: null,
+  isAuth: false,
+};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,8 +21,8 @@ const userReducer = (state = initialState, action) => {
         password: data.password,
         photo: data.photo,
         chat_id: data.chat_id,
+        isAuth: true,
       };
-
     default:
       return state;
   }
@@ -41,6 +48,7 @@ export const getUserLogin = (user, pass) => async (dispatch) => {
   });
 
   const result = await res.json();
+
   dispatch(getUserLoginAC(result));
 };
 

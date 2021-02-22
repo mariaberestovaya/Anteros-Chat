@@ -9,6 +9,7 @@ export default async function login({ body: { username, password } }, res) {
     password,
   });
 
+  // !fixing
   if (!user) {
     console.log("error");
     return null;
