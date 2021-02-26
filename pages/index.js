@@ -14,11 +14,6 @@ const Home = (props) => {
     return <Profile data={props} />;
   }
 
-  function lol() {
-    console.log("signup");
-    return <div>edede</div>;
-  }
-
   return (
     <Segment className="h-screen" placeholder>
       <Grid columns={2} relaxed="very" stackable>
