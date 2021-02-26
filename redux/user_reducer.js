@@ -1,11 +1,6 @@
 const GET_USER = "anteros-chat/app/GET_USER";
-const INIT = "anteros-chat/app/INIT";
 
 let initialState = {
-  id: null,
-  username: null,
-  password: null,
-  chat_id: null,
   isAuth: false,
 };
 
@@ -17,9 +12,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         id: data._id,
+        login: data.login,
         username: data.username,
         password: data.password,
-        photo: data.photo,
+        image: data.image,
+        description: data.description,
         chat_id: data.chat_id,
         isAuth: true,
       };
@@ -35,10 +32,10 @@ export const getUserLoginAC = (data) => {
   };
 };
 
-export const getUserLogin = (user, pass) => async (dispatch) => {
+export const getUserLogin = (log, pass) => async (dispatch) => {
   const res = await fetch("/api/login", {
     body: JSON.stringify({
-      username: user,
+      login: log,
       password: pass,
     }),
     headers: {

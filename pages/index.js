@@ -2,12 +2,21 @@ import "semantic-ui-css/semantic.min.css";
 import React from "react";
 import { Divider, Grid, Segment } from "semantic-ui-react";
 import Login from "./../components/Login";
-import SignUp from "./../components/SignUp";
+import SignUp from "../components/SignUp/SignUp";
 import { connect } from "react-redux";
+import Profile from "../components/Profile";
 
-const Home = ({ isAuth, username }) => {
-  if (isAuth) {
-    return <div>{username}</div>;
+//TODO: search for the desired chat (name, password), write to the table of this user
+//TODO: by the chat id we get a list of all messages
+
+const Home = (props) => {
+  if (props.isAuth) {
+    return <Profile data={props} />;
+  }
+
+  function lol() {
+    console.log("signup");
+    return <div>edede</div>;
   }
 
   return (
