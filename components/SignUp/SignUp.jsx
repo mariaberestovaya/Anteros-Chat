@@ -2,14 +2,14 @@ import { Grid, Button, Form } from "semantic-ui-react";
 import React, { useState, Fragment } from "react";
 import SignUpForm from "./SignUpForm";
 
-const SignUpButton = ({ setEvent }) => {
+const SignUpButton = (props) => {
   return (
     <Grid.Column verticalAlign="middle">
       <Button
         content="Sign up"
         icon="signup"
         size="big"
-        onClick={() => setEvent(true)}
+        onClick={() => props.setEvent(true)}
       />
     </Grid.Column>
   );
@@ -17,7 +17,6 @@ const SignUpButton = ({ setEvent }) => {
 
 const SignUp = (props) => {
   const [event, setEvent] = useState(false);
-
   return (
     <Fragment>
       {event ? (

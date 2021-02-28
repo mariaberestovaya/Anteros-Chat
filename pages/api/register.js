@@ -7,7 +7,7 @@ export default async function create_chat(
 ) {
   await database();
 
-  await User.create({
+  const new_user = await User.create({
     username,
     login,
     password,
@@ -16,5 +16,5 @@ export default async function create_chat(
     chat_id: null,
   });
 
-  res.end();
+  res.json(new_user);
 }
