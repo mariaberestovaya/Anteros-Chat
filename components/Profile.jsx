@@ -1,7 +1,10 @@
 import React from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Icon, Grid, Image, Segment } from "semantic-ui-react";
+import Chat from "./Chat";
 
-const Profile = ({ data: { image, description, username } }) => {
+const User = ({ data: { data } }) => {
+  const { image, description, username } = data;
+
   return (
     <Card>
       <Image src={image} wrapped ui={false} />
@@ -18,7 +21,20 @@ const Profile = ({ data: { image, description, username } }) => {
           22 Friends
         </a>
       </Card.Content>
+
+      <Chat />
     </Card>
+  );
+};
+
+const Profile = (data) => {
+  return (
+    <Segment className="h-screen" placeholder>
+      <Grid columns={2} relaxed="very" stackable>
+        <User data={data} />
+        <Chat />
+      </Grid>
+    </Segment>
   );
 };
 

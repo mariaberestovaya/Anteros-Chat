@@ -8,6 +8,10 @@ const User = new Schema({
   description: String,
   image: String,
   chat_id: String,
+  isAuth: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export default mongoose.models.User || mongoose.model("User", User);
