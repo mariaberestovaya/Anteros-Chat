@@ -1,5 +1,26 @@
-const Chat = (props) => {
-  return <div>test</div>;
+import { getUserChat } from "../redux/chat_reducer";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import Link from "next/link";
+
+const Chat = ({ id, getUserChat, chat }) => {
+  useEffect(() => {
+    getUserChat(id);
+  });
+
+  if (!chat) {
+    return <div>loading...</div>;
+  }
+
+  return (
+    <Link href={`/chats/${encodeURIComponent(id)}`}>
+      <a>{chat.name}</a>
+    </Link>
+  );
 };
 
-export default Chat;
+const mapStateToProps = (state) => ({
+  chat: state.chat,
+});
+
+export default connect(mapStateToProps, { getUserChat })(Chat);
