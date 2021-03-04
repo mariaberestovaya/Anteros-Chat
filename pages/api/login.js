@@ -13,7 +13,6 @@ export default async function login(req, res) {
   if (!user) {
     return null;
   } else {
-    console.log(user);
     return res.json(user);
   }
 }

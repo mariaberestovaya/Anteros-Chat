@@ -4,6 +4,9 @@ export const chatAPI = {
       body: JSON.stringify({
         user_id: user_id,
       }),
+      headers: {
+        "Content-Type": "application/json",
+      },
       method: "POST",
     });
     return await res.json();
@@ -34,6 +37,9 @@ export const userAPI = {
         description,
         image,
       }),
+      headers: {
+        "Content-Type": "application/json",
+      },
       method: "POST",
     });
     return await res.json();

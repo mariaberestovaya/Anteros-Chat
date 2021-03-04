@@ -1,4 +1,4 @@
-import { chatAPI } from "../api";
+import { chatAPI } from "../helpers/api";
 
 const GET_CHAT = "GET_CHAT";
 

@@ -1,4 +1,4 @@
-import { userAPI } from "../api";
+import { userAPI } from "../helpers/api";
 
 const GET_USER = "GET_USER";
 const ADD_USER = "ADD_USER";
@@ -19,6 +19,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+        isAuth: true,
       };
 
     default:
@@ -36,28 +37,12 @@ const addUserRegisterAC = (data) => {
 export const addUserRegister = (name, login, pass, image, text) => async (
   dispatch
 ) => {
-  const res = await fetch("/api/register", {
-    body: JSON.stringify({
-      username: name,
-      login: login,
-      password: pass,
-      description: text,
-      image: image,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-  });
-
-  const result = await res.json();
-  ву;
-  dispatch(addUserRegisterAC(result));
+  const payload = await userAPI.addUserRegister(name, login, pass, image, text);
+  dispatch({ type: ADD_USER, payload });
 };
 
 export const getUserLogin = (log, pass) => async (dispatch) => {
   const payload = await userAPI.getUserLogin(log, pass);
-  debugger;
   dispatch({ type: GET_USER, payload });
 };
 
