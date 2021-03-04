@@ -1,8 +1,22 @@
+const helperAPI = async (url, arg) => {
+  const res = await fetch(`/api/${url}`, {
+    body: JSON.stringify({
+      login: arg.login,
+      password: arg.password,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  });
+  return await res.json();
+};
+
 export const chatAPI = {
   async getUserChat(user_id) {
     const res = await fetch("/api/chat", {
       body: JSON.stringify({
-        user_id: user_id,
+        user_id,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -14,18 +28,22 @@ export const chatAPI = {
 };
 
 export const userAPI = {
-  async getUserLogin(log, pass) {
-    const res = await fetch("/api/login", {
-      body: JSON.stringify({
-        login: log,
-        password: pass,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-    return await res.json();
+  // async getUserLogin(login, password) {
+  //   const res = await fetch("/api/login", {
+  //     body: JSON.stringify({
+  //       login,
+  //       password,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     method: "POST",
+  //   });
+  //   return await res.json();
+  // },
+  async getUserLogin(login, password) {
+    const arg = { login, password };
+    return helperAPI("login", arg);
   },
 
   async addUserRegister(username, login, password, description, image) {

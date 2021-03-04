@@ -29,7 +29,7 @@ const Profile = ({ data }) => {
     <Segment className="h-screen" placeholder>
       <Grid columns={2} relaxed="very" stackable>
         <User image={image} description={description} username={username} />
-        <Chat id={_id} />
+        {/* <Chat id={_id} /> */}
       </Grid>
     </Segment>
   );

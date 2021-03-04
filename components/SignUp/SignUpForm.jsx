@@ -1,12 +1,12 @@
 import { Form, Button, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addUserRegister } from "../../redux/user-reducer";
+import { register } from "../../redux/user-reducer";
 
 const SignUpForm = ({ setEvent, addUserRegister }) => {
-  function register(event) {
+  function registerFn(event) {
     event.preventDefault();
     const input = event.target;
-    addUserRegister(
+    register(
       input.name.value,
       input.login.value,
       input.pass.value,
@@ -17,7 +17,7 @@ const SignUpForm = ({ setEvent, addUserRegister }) => {
 
   return (
     <Grid.Column>
-      <Form onSubmit={register}>
+      <Form onSubmit={registerFn}>
         <Form.Group widths="equal">
           {/* name */}
           <Form.Input
@@ -66,4 +66,4 @@ const SignUpForm = ({ setEvent, addUserRegister }) => {
   );
 };
 
-export default connect(null, { addUserRegister })(SignUpForm);
+export default connect(null, { register })(SignUpForm);

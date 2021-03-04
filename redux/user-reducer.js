@@ -1,7 +1,6 @@
 import { userAPI } from "../helpers/api";
 
-const GET_USER = "GET_USER";
-const ADD_USER = "ADD_USER";
+const GET_OR_ADD_USER = "chat/GET_OR_ADD_USER";
 
 let initialState = {
   isAuth: false,
@@ -9,13 +8,7 @@ let initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
-      return {
-        ...state,
-        ...action.payload,
-        isAuth: true,
-      };
-    case ADD_USER:
+    case GET_OR_ADD_USER:
       return {
         ...state,
         ...action.payload,
@@ -27,23 +20,16 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-const addUserRegisterAC = (data) => {
-  return {
-    type: ADD_USER,
-    data,
-  };
-};
-
-export const addUserRegister = (name, login, pass, image, text) => async (
+export const register = (name, login, pass, image, text) => async (
   dispatch
 ) => {
   const payload = await userAPI.addUserRegister(name, login, pass, image, text);
-  dispatch({ type: ADD_USER, payload });
+  dispatch({ type: GET_OR_ADD_USER, payload });
 };
 
-export const getUserLogin = (log, pass) => async (dispatch) => {
-  const payload = await userAPI.getUserLogin(log, pass);
-  dispatch({ type: GET_USER, payload });
+export const login = (login, password) => async (dispatch) => {
+  const payload = await userAPI.getUserLogin(login, password);
+  dispatch({ type: GET_OR_ADD_USER, payload });
 };
 
 export default userReducer;

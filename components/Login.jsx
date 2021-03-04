@@ -1,12 +1,12 @@
 import { Grid, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { getUserLogin } from "../redux/user-reducer";
+import { login } from "../redux/user-reducer";
 
 const LoginForm = (props) => {
   const loginUser = (event) => {
     event.preventDefault();
 
-    props.getUserLogin(event.target.user.value, event.target.pass.value);
+    props.login(event.target.user.value, event.target.pass.value);
   };
 
   return (
@@ -36,4 +36,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default connect(null, { getUserLogin })(LoginForm);
+export default connect(null, { login })(LoginForm);
