@@ -24,12 +24,12 @@ const User = ({ image, description, username }) => {
 };
 
 const Profile = ({ data }) => {
-  const { id, image, description, username } = data;
+  const { _id, image, description, username } = data;
   return (
     <Segment className="h-screen" placeholder>
       <Grid columns={2} relaxed="very" stackable>
         <User image={image} description={description} username={username} />
-        <Chat id={id} />
+        {/* <Chat id={_id} /> */}
       </Grid>
     </Segment>
   );

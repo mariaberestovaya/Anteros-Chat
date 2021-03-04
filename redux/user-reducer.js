@@ -1,5 +1,7 @@
-const GET_USER = "anteros-chat/app/GET_USER";
-const ADD_USER = "anteros-chat/app/ADD_USER";
+import { userAPI } from "../api";
+
+const GET_USER = "GET_USER";
+const ADD_USER = "ADD_USER";
 
 let initialState = {
   isAuth: false,
@@ -8,40 +10,20 @@ let initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
-      const data = action.data;
-
       return {
         ...state,
-        id: data._id,
-        login: data.login,
-        username: data.username,
-        password: data.password,
-        image: data.image,
-        description: data.description,
-        chat_id: data.chat_id,
+        ...action.payload,
         isAuth: true,
       };
     case ADD_USER:
       return {
         ...state,
-        id: action.data._id,
-        login: action.data.login,
-        username: action.data.username,
-        password: action.data.password,
-        image: action.data.image,
-        description: action.data.description,
+        ...action.payload,
       };
 
     default:
       return state;
   }
-};
-
-const getUserLoginAC = (data) => {
-  return {
-    type: GET_USER,
-    data,
-  };
 };
 
 const addUserRegisterAC = (data) => {
@@ -69,25 +51,14 @@ export const addUserRegister = (name, login, pass, image, text) => async (
   });
 
   const result = await res.json();
-
+  ву;
   dispatch(addUserRegisterAC(result));
 };
 
 export const getUserLogin = (log, pass) => async (dispatch) => {
-  const res = await fetch("/api/login", {
-    body: JSON.stringify({
-      login: log,
-      password: pass,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "POST",
-  });
-
-  const result = await res.json();
-
-  dispatch(getUserLoginAC(result));
+  const payload = await userAPI.getUserLogin(log, pass);
+  debugger;
+  dispatch({ type: GET_USER, payload });
 };
 
 export default userReducer;

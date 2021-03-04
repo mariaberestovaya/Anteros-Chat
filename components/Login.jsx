@@ -1,6 +1,6 @@
 import { Grid, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { getUserLogin } from "../redux/user_reducer";
+import { getUserLogin } from "../redux/user-reducer";
 
 const LoginForm = (props) => {
   const loginUser = (event) => {

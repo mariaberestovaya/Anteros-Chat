@@ -1,4 +1,4 @@
-import { getUserChat } from "../redux/chat_reducer";
+import { getUserChat } from "../redux/chat-reducer";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import Link from "next/link";

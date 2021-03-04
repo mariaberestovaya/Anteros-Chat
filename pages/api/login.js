@@ -1,19 +1,19 @@
 import database from "../../util/mongo_connect";
 import User from "../../models/User";
 
-export default async function login({ body: { login, password } }, res) {
+export default async function login(req, res) {
   await database();
 
   const user = await User.findOne({
-    login,
-    password,
+    login: req.body.login,
+    password: req.body.password,
   });
 
   //! REFACTORING
   if (!user) {
-    console.log("error");
     return null;
   } else {
+    console.log(user);
     return res.json(user);
   }
 }

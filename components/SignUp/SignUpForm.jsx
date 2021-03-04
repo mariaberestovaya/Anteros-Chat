@@ -1,6 +1,6 @@
 import { Form, Button, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addUserRegister } from "../../redux/user_reducer";
+import { addUserRegister } from "../../redux/user-reducer";
 
 const SignUpForm = ({ setEvent, addUserRegister }) => {
   function register(event) {
