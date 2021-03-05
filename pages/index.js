@@ -6,9 +6,6 @@ import SignUp from "../components/SignUp/SignUp";
 import { connect } from "react-redux";
 import Profile from "../components/Profile";
 
-//TODO: search for the desired chat (name, password), write to the table of this user
-//TODO: by the chat id we get a list of all messages
-
 const Home = (props) => {
   if (props.isAuth) {
     return <Profile data={props} />;

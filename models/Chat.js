@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
 const Chats = new Schema({
-  // chat id is generated automatically
   name: String,
   user_id: String,
 });

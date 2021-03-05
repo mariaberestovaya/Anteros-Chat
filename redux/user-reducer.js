@@ -33,8 +33,7 @@ export const register = (
 };
 
 export const login = (login, password) => async (dispatch) => {
-  const args = { login, password };
-  const payload = await helperAPI("/login", args, "POST");
+  const payload = await helperAPI("/login", { login, password }, "POST");
   dispatch({ type: GET_OR_ADD_USER, payload });
 };
 

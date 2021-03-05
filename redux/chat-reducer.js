@@ -17,8 +17,7 @@ const chatReducer = (state = initialState, action) => {
 };
 
 export const getUserChat = (user_id) => async (dispatch) => {
-  const args = { user_id };
-  const payload = await helperAPI("/chat", args, "POST");
+  const payload = await helperAPI("/chat", { user_id }, "POST");
   dispatch({ type: GET_CHAT, payload });
 };
 
