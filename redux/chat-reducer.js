@@ -1,4 +1,4 @@
-import { chatAPI } from "../helpers/api";
+import { helperAPI } from "../helpers/api";
 
 const GET_CHAT = "GET_CHAT";
 
@@ -17,8 +17,8 @@ const chatReducer = (state = initialState, action) => {
 };
 
 export const getUserChat = (user_id) => async (dispatch) => {
-  const payload = await chatAPI.getUserChat(user_id);
-
+  const args = { user_id };
+  const payload = await helperAPI("/chat", args, "POST");
   dispatch({ type: GET_CHAT, payload });
 };
 

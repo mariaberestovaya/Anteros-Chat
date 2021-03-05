@@ -1,4 +1,4 @@
-import { userAPI } from "../helpers/api";
+import { helperAPI } from "../helpers/api";
 
 const GET_OR_ADD_USER = "chat/GET_OR_ADD_USER";
 
@@ -20,15 +20,21 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export const register = (name, login, pass, image, text) => async (
-  dispatch
-) => {
-  const payload = await userAPI.addUserRegister(name, login, pass, image, text);
+export const register = (
+  username,
+  login,
+  password,
+  description,
+  image
+) => async (dispatch) => {
+  const args = { username, login, password, description, image };
+  const payload = await helperAPI("/register", args, "POST");
   dispatch({ type: GET_OR_ADD_USER, payload });
 };
 
 export const login = (login, password) => async (dispatch) => {
-  const payload = await userAPI.getUserLogin(login, password);
+  const args = { login, password };
+  const payload = await helperAPI("/login", args, "POST");
   dispatch({ type: GET_OR_ADD_USER, payload });
 };
 
