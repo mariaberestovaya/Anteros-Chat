@@ -28,7 +28,14 @@ export const register = (
   image
 ) => async (dispatch) => {
   const args = { username, login, password, description, image };
+
   const payload = await helperAPI("/register", args, "POST");
+
+  const user_id = payload._id;
+  const chat = await helperAPI("/create-chat", { username, user_id }, "POST");
+
+  payload.chat_id = chat._id;
+
   dispatch({ type: GET_OR_ADD_USER, payload });
 };
 

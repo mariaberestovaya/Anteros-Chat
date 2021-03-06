@@ -21,7 +21,9 @@ const Chat = ({ id, getUserChat, getUserMessages, chat, message }) => {
       {/* <Link href={`/chats/${encodeURIComponent(id)}`}>
         <a>{chat.name}</a>
       </Link> */}
-      {/* {console.log(message && message.messages)} */}
+
+      {message &&
+        message.messages.map((e) => <div key={e._id}>{e.content}</div>)}
     </Fragment>
   );
 };

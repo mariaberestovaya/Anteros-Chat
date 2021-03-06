@@ -10,8 +10,8 @@ const SignUpForm = ({ setEvent, register }) => {
       input.name.value,
       input.login.value,
       input.pass.value,
-      input.image.value,
-      input.text.value
+      input.text.value,
+      input.image.value
     );
   }
 

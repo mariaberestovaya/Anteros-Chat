@@ -1,8 +1,8 @@
 import { helperAPI } from "../helpers/api";
 
-const GET_CHAT = "GET_CHAT";
+const GET_CHAT = "chat/GET_CHAT";
 
-let initialState = null;
+let initialState = [];
 
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
