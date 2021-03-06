@@ -8,7 +8,7 @@ import { Fragment } from "react";
 const Chat = ({ id, getUserChat, getUserMessages, chat, message }) => {
   useEffect(() => {
     getUserChat(id);
-    getUserMessages("603beeb2b97d322ba0f39750");
+    getUserMessages(chat._id);
   });
 
   if (!chat) {
@@ -17,7 +17,7 @@ const Chat = ({ id, getUserChat, getUserMessages, chat, message }) => {
 
   return (
     <Fragment>
-      <a>{chat.name}</a>
+      <a>{chat.chatname}</a>
       {/* <Link href={`/chats/${encodeURIComponent(id)}`}>
         <a>{chat.name}</a>
       </Link> */}

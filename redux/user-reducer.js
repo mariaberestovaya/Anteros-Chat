@@ -32,7 +32,9 @@ export const register = (
   const payload = await helperAPI("/register", args, "POST");
 
   const user_id = payload._id;
-  const chat = await helperAPI("/create-chat", { username, user_id }, "POST");
+  const chatname = username;
+  debugger;
+  const chat = await helperAPI("/create-chat", { chatname, user_id }, "POST");
 
   payload.chat_id = chat._id;
 

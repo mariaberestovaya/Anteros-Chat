@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const Chats = new Schema({
-  name: String,
+  chatname: String,
   user_id: String,
 });
 
