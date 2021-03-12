@@ -1,0 +1,92 @@
+.login {
+  background-color: white;
+  width: 690px;
+  height: 550px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+.login h1 {
+  padding: 40px 0 30px 0;
+  color: #363636;
+  text-transform: uppercase;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form input:first-child {
+  margin-bottom: 40px;
+}
+
+.login__form input {
+  padding: 0 0 0 10px;
+  font-weight: 400;
+  font-size: 1.2rem;
+  height: 80px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #363636;
+}
+
+.login__form input::placeholder {
+  transform: translateY(0px);
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.login__form input:hover, .login__form input:focus, .login__form input:active:focus {
+  outline: none;
+}
+
+.login__form input:hover::placeholder, .login__form input:focus::placeholder, .login__form input:active:focus::placeholder {
+  position: relative;
+  transform: translateY(-30px);
+}
+
+.login__form button {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  width: 50%;
+  height: 90px;
+  border: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.login__form button:nth-of-type(1) {
+  border-radius: 0 0 0 5px;
+  background: #c4c4c4;
+  color: #363636;
+}
+
+.login__form button:nth-of-type(2) {
+  border-radius: 0 0 5px 0;
+  background: #363636;
+  color: white;
+}
+
+.login__form__buttons {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}

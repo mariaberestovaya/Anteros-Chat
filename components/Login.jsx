@@ -1,17 +1,21 @@
 import { Grid, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { login } from "../redux/user-reducer";
+import { loginUser } from "../redux/user-reducer";
 
 const LoginForm = (props) => {
-  const loginUser = (event) => {
+  if (props.isAuth) {
+    return <Profile data={props} />;
+  }
+
+  const loginForm = (event) => {
     event.preventDefault();
 
-    props.login(event.target.user.value, event.target.pass.value);
+    props.loginUser(event.target.user.value, event.target.pass.value);
   };
 
   return (
     <Grid.Column>
-      <Form onSubmit={loginUser}>
+      <Form onSubmit={loginForm}>
         <Form.Input
           name="user"
           type="text"
@@ -36,4 +40,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default connect(null, { login })(LoginForm);
+export default connect(null, { loginUser })(LoginForm);

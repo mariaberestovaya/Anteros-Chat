@@ -34,9 +34,6 @@ function Chat({
       <p>
         chatname: <a>{chat.chatname}</a>
       </p>
-      {/* <Link href={`/chats/${encodeURIComponent(id)}`}>
-        <a>{chat.name}</a>
-      </Link> */}
       {message &&
         message.messages.map((e) => <div key={e._id}>{e.content}</div>)}
       <Form onSubmit={new_messages}>

@@ -6,7 +6,7 @@ import SignUp from "../components/SignUp/SignUp";
 import { connect } from "react-redux";
 import Profile from "../components/Profile";
 
-const Home = (props) => {
+function Home(props) {
   if (props.isAuth) {
     return <Profile data={props} />;
   }
@@ -21,7 +21,7 @@ const Home = (props) => {
       <Divider vertical>Or</Divider>
     </Segment>
   );
-};
+}
 
 const mapStateToProps = (state) => {
   return state.user;

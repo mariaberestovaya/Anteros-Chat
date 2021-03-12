@@ -41,7 +41,7 @@ export const register = (
   dispatch({ type: GET_OR_ADD_USER, payload });
 };
 
-export const login = (login, password) => async (dispatch) => {
+export const loginUser = (login, password) => async (dispatch) => {
   const payload = await helperAPI("/login", { login, password }, "POST");
   dispatch({ type: GET_OR_ADD_USER, payload });
 };
