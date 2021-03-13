@@ -3,12 +3,10 @@ $main: #363636;
 
 $gray: #c4c4c4;
 
-$font: "Open Sans", sans-serif;
-
 .login {
   background-color: white;
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height: 400px;
   border-radius: 5px;
 
   position: absolute;
@@ -19,11 +17,12 @@ $font: "Open Sans", sans-serif;
 
 .container {
   margin: 0 auto;
-  padding: 0 100px;
+  padding: 0 80px;
 }
 
 .login h1 {
-  padding: 40px 0 30px 0;
+  padding: 20px 0 30px 0;
+
   color: $main;
   text-transform: uppercase;
   font-size: 2.25rem;
@@ -35,18 +34,16 @@ $font: "Open Sans", sans-serif;
   flex-direction: column;
 }
 
-.login__form input:first-child {
-  margin-bottom: 40px;
-}
-
 .login__form input {
   padding: 0 0 0 10px;
-  font-weight: 400;
-  font-size: 1.2rem;
+  margin-bottom: 30px;
+  height: 30px;
 
-  height: 80px;
+  font-weight: 400;
+  font-size: 1.4rem;
 
   outline: none;
+
   border: none;
   border-bottom: 1px solid $main;
 
@@ -55,7 +52,7 @@ $font: "Open Sans", sans-serif;
     transition: 0.5s;
 
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   &:hover,
   &:focus,
@@ -63,37 +60,8 @@ $font: "Open Sans", sans-serif;
     outline: none;
     &::placeholder {
       position: relative;
-      transform: translateY(-30px);
+      transform: translateY(-25px);
     }
-  }
-}
-
-.login__form button {
-  cursor: pointer;
-  display: inline-block;
-  float: left;
-
-  width: 50%;
-  height: 90px;
-  border: none;
-  text-transform: uppercase;
-  transition: 0.5s;
-
-  outline: none;
-
-  font-size: 1.2rem;
-  font-weight: 700;
-
-  &:nth-of-type(1) {
-    border-radius: 0 0 0 5px;
-    background: $gray;
-    color: $main;
-  }
-  &:nth-of-type(2) {
-    border-radius: 0 0 5px 0;
-
-    background: $main;
-    color: white;
   }
 }
 
@@ -104,4 +72,98 @@ $font: "Open Sans", sans-serif;
   right: 0;
   bottom: 0;
   z-index: 1;
+}
+
+.login__form button {
+  cursor: pointer;
+  width: 50%;
+
+  height: 70px;
+
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  border: none;
+  outline: none;
+
+  overflow: hidden;
+
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    transparent 50%,
+    #dcdcdc 50%,
+    #dcdcdc
+  );
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  transition: all 0.25s ease-in;
+
+  &:nth-of-type(1) {
+    border-radius: 0 0 0 5px;
+    background: $gray;
+    color: $main;
+
+    &:hover {
+      color: #fff !important;
+      background-color: transparent;
+      text-shadow: none;
+    }
+
+    &:before {
+      display: block;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 0px;
+      width: 100%;
+      z-index: -1;
+      content: "";
+      color: #fff !important;
+      background: $main;
+      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+    }
+
+    &:hover:before {
+      bottom: 0%;
+      top: auto;
+      height: 100%;
+    }
+  }
+
+  &:nth-of-type(2) {
+    border-radius: 0 0 5px 0;
+    background: $gray;
+    color: #000;
+
+    &:hover {
+      color: #fff !important;
+      background-color: transparent;
+      text-shadow: ntwo;
+    }
+
+    &:before {
+      display: block;
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      height: 0px;
+      width: 100%;
+      z-index: -1;
+      content: "";
+      color: #fff !important;
+      background: $main;
+
+      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+    }
+
+    &:hover:before {
+      top: 0%;
+      bottom: auto;
+      height: 100%;
+    }
+  }
 }

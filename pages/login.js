@@ -1,6 +1,6 @@
-import LoginForm from "./../components/Login/Login";
 import { connect } from "react-redux";
 import { loginUser } from "./../redux/user-reducer";
+import LoginForm from "./../components/Login/Login";
 import Profile from "./../components/Profile";
 
 function Login(props) {

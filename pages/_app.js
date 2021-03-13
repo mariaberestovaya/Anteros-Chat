@@ -8,10 +8,6 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <Head>
         <title>online</title>
-        <link
-          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-          rel="stylesheet"
-        />
       </Head>
       <Component {...pageProps} />
     </Provider>
