@@ -1,5 +1,9 @@
-import { getUserChat } from "../redux/chat-reducer";
-import { getUserMessages, createNewMessages } from "../redux/message-reducer";
+// import { getUserChat } from "../redux/chat-reducer";
+import {
+  getUserMessages,
+  createNewMessages,
+  getUserChat,
+} from "../redux/chat-reducer";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 // import Link from "next/link";
@@ -16,8 +20,14 @@ function Chat({
 }) {
   useEffect(() => {
     getUserChat(id);
-    getUserMessages(chat._id);
+    if (chat) {
+      getUserMessages(chat._id);
+    }
   });
+
+  if (!chat) {
+    return <div>loading...</div>;
+  }
 
   function new_messages(e) {
     e.preventDefault();
@@ -25,17 +35,12 @@ function Chat({
     console.log(id, chat._id, e.target.mess.value);
   }
 
-  if (!chat) {
-    return <div>loading...</div>;
-  }
-
   return (
     <Fragment>
       <p>
         chatname: <a>{chat.chatname}</a>
       </p>
-      {message &&
-        message.messages.map((e) => <div key={e._id}>{e.content}</div>)}
+      {message && message.map((e) => <div key={e._id}>{e.content}</div>)}
       <Form onSubmit={new_messages}>
         <Input name="mess" />
         <Button>submit</Button>
@@ -45,8 +50,8 @@ function Chat({
 }
 
 const mapStateToProps = (state) => ({
-  chat: state.chat,
-  message: state.message,
+  chat: state.chat.chats[0],
+  message: state.chat.messages,
 });
 
 export default connect(mapStateToProps, {

@@ -5,7 +5,6 @@ import { loginUser } from "../../redux/user-reducer";
 import Profile from "./../Profile";
 
 function LoginForm(props) {
-  debugger;
   if (props.isAuth) {
     return <Profile data={props} />;
   }

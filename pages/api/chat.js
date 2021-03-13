@@ -4,7 +4,7 @@ import Chat from "../../models/Chat";
 export default async function chat({ body: { user_id } }, res) {
   await database();
 
-  const chat = await Chat.findOne({
+  const chat = await Chat.find({
     user_id,
   });
 

@@ -28,12 +28,10 @@ export const register = (
   image
 ) => async (dispatch) => {
   const args = { username, login, password, description, image };
-
   const payload = await helperAPI("/register", args, "POST");
 
   const user_id = payload._id;
   const chatname = username;
-  debugger;
   const chat = await helperAPI("/create-chat", { chatname, user_id }, "POST");
 
   payload.chat_id = chat._id;
