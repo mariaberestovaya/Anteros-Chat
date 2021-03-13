@@ -1,5 +1,23 @@
-import Login from "./../components/Login/Login";
+import LoginForm from "./../components/Login/Login";
+import { connect } from "react-redux";
+import { loginUser } from "./../redux/user-reducer";
+import Profile from "./../components/Profile";
 
-export default function LoginForm() {
-  return <Login />;
+function Login(props) {
+  if (props.isAuth) {
+    return <Profile data={props} />;
+  }
+
+  const loginForm = (event) => {
+    event.preventDefault();
+    props.loginUser(event.target.user.value, event.target.pass.value);
+  };
+
+  return <LoginForm loginForm={loginForm} />;
 }
+
+const mapStateToProps = (state) => {
+  return state.user;
+};
+
+export default connect(mapStateToProps, { loginUser })(Login);

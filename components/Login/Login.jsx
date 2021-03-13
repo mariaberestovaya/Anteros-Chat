@@ -1,20 +1,7 @@
 import { Fragment } from "react";
 import styles from "./Login.module.css";
-import { connect } from "react-redux";
-import { loginUser } from "../../redux/user-reducer";
-import Profile from "./../Profile";
 
-function LoginForm(props) {
-  if (props.isAuth) {
-    return <Profile data={props} />;
-  }
-
-  const loginForm = (event) => {
-    event.preventDefault();
-
-    props.loginUser(event.target.user.value, event.target.pass.value);
-  };
-
+export default function LoginForm({ loginForm }) {
   return (
     <Fragment>
       <div className={styles.login}>
@@ -34,9 +21,3 @@ function LoginForm(props) {
     </Fragment>
   );
 }
-
-const mapStateToProps = (state) => {
-  return state.user;
-};
-
-export default connect(mapStateToProps, { loginUser })(LoginForm);
